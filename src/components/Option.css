@@ -1,0 +1,13 @@
+.option-button {
+    font-size: 1.2rem;
+    font-family: "Karla", sans-serif;
+
+    width: max-content;
+    height: 30px;
+    margin: 0 1rem 1rem 0;
+    background-color: #f5f7fb;
+    border: 1.5px solid #4d5b9e;
+    border-radius: 12px;
+    color: #293264;
+    cursor: pointer;
+}
