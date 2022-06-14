@@ -4,6 +4,8 @@ import "./App.css";
 import Intro from "./components/Intro";
 import Blob from "./components/Blob";
 import Question from "./components/Question";
+import blob1 from "./assets/shape-1.png";
+import blob2 from "./assets/shape-2.png";
 
 function App() {
     const [questions, setQuestions] = React.useState([]);
@@ -11,11 +13,13 @@ function App() {
     const [isGameStart, setIsGameStart] = React.useState(false);
     const [correctCounter, setCorrectCounter] = React.useState(0);
     const [disabled, setDisabled] = React.useState(false);
-    const [reset, setReset] = React.useState(false);
-
     const allQuestionsAnswered = questions.every(
         (question) => question.selectedAnswer !== ""
     );
+    const [apiSettings, setApiSettings] = React.useState({
+        category: 9,
+        difficulty: "",
+    });
 
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
@@ -28,27 +32,32 @@ function App() {
         setIsGameStart((oldState) => !oldState);
     };
 
-    React.useEffect(function () {
-        fetch("https://opentdb.com/api.php?amount=5&type=multiple")
-            .then((res) => res.json())
-            .then((data) =>
-                setQuestions(
-                    data.results.map((obj) => {
-                        return {
-                            selectedAnswer: "",
-                            isRight: false,
-                            id: nanoid(),
-                            answers: [
-                                ...obj.incorrect_answers,
-                                obj.correct_answer,
-                            ],
-                            ...obj,
-                        };
-                    })
-                )
-            );
-        // setQuestions((oldArray) => shuffleArray(oldArray));
-    }, []);
+    React.useEffect(
+        function () {
+            fetch(
+                `https://opentdb.com/api.php?amount=5&category=${apiSettings.category}&difficulty=${apiSettings.difficulty}&type=multiple`
+            )
+                .then((res) => res.json())
+                .then((data) =>
+                    setQuestions(
+                        data.results.map((obj) => {
+                            return {
+                                selectedAnswer: "",
+                                isRight: false,
+                                id: nanoid(),
+                                answers: [
+                                    ...obj.incorrect_answers,
+                                    obj.correct_answer,
+                                ],
+                                ...obj,
+                            };
+                        })
+                    )
+                );
+            // setQuestions((oldArray) => shuffleArray(oldArray));
+        },
+        [isGameStart]
+    );
 
     React.useEffect(() => {
         if (questions.length !== 0 && allQuestionsAnswered) {
@@ -60,7 +69,6 @@ function App() {
             });
 
             setCorrectCounter(correctAnswers);
-            // setCheckAnswerBtn(true);
         }
     }, [questions]);
 
@@ -95,6 +103,15 @@ function App() {
         questions.forEach((element) => (element.isRight ? (counter += 1) : 0));
         setCorrectCounter((oldValue) => oldValue + counter);
     };
+
+    const handleReset = () => {
+        setIsGameStart((oldState) => !oldState);
+        setQuestions([]);
+        setCorrectCounter(0);
+        setDisabled(false);
+        setIsGameOver(false);
+    };
+
     const componentsArray = questions.map((obj) => {
         return (
             <Question
@@ -114,12 +131,16 @@ function App() {
 
     return (
         <>
-            <Blob />
+            <img src={blob1} className="blob-top"></img>
             <main className="main-container">
                 {isGameStart ? (
                     componentsArray
                 ) : (
-                    <Intro startGame={startGame} />
+                    <Intro
+                        startGame={startGame}
+                        apiSettings={apiSettings}
+                        setApiSettings={setApiSettings}
+                    />
                 )}
             </main>
             {isGameStart && (
@@ -129,20 +150,18 @@ function App() {
                             ? `Você acertou ${correctCounter}/5 perguntas!`
                             : ""}
                     </p>
-                    {isGameOver ? (
-                        <button className="main-btn" onClick={setReset(true)}>
-                            {"Reset Game"}
-                        </button>
-                    ) : (
-                        <button
-                            className="main-btn"
-                            onClick={handleCheckAnswer}
-                        >
-                            {"Check answers"}
-                        </button>
-                    )}
+
+                    <button
+                        className="main-btn"
+                        onClick={() => {
+                            isGameOver ? handleReset() : handleCheckAnswer();
+                        }}
+                    >
+                        {isGameOver ? "Reset Game" : "Check answers"}
+                    </button>
                 </section>
             )}
+            <img src={blob2} className="blob-bottom"></img>
         </>
     );
 }

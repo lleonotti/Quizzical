@@ -11,8 +11,36 @@
 }
 
 .description {
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 400;
     margin: 0 0 2rem 0;
     text-align: center;
+}
+.api-form-label {
+    font-size: 1.2rem;
+    padding: 0 1rem 0 1rem;
+}
+
+.api-form-container {
+    display: grid;
+    grid-template-columns: 0.1fr 2fr;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1rem;
+    text-align: center;
+    /* justify-items: center; */
+    align-items: center;
+    margin-bottom: 2rem;
+}
+.main-selector {
+    font-size: 1.2rem;
+    font-family: "Karla", sans-serif;
+
+    /* width: 200px; */
+    height: 52px;
+    text-align: center;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 15px;
+    color: #293264;
+    cursor: pointer;
 }

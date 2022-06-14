@@ -45,3 +45,18 @@ body {
     font-size: 1.5rem;
     padding: 0 1rem 0 1rem;
 }
+
+.blob-top {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20vw;
+    z-index: -1;
+}
+
+.blob-bottom {
+    position: absolute;
+    bottom: 0;
+    width: 18vw;
+    z-index: -1;
+}
