@@ -11,7 +11,7 @@ body {
 
 @import url("https://fonts.googleapis.com/css2?family=Karla&display=swap");
 
-.main-container {
+.intro-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -61,15 +61,31 @@ body {
     z-index: -1;
 }
 
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    margin-top: 1rem;
+    padding: 0 1rem 0 1rem;
+}
+
 @media only screen and (max-width: 425px) {
-    .page-container {
-        /* display: flex;
+    .results-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 0;
+        margin-top: 1rem;
+    }
+    .main-container {
+        display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center; */
-        /* height: fit-content; */
-        /* width: fit-content; */
-        /* margin-top: 5rem; */
-        /* margin-bottom: 1rem; */
+        align-items: center;
+        height: auto;
+        margin-top: 1rem;
+        padding: 0 1rem 0 1rem;
     }
 }

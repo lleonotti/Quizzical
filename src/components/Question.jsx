@@ -42,7 +42,7 @@ function Question(props) {
         <article className="question-container">
             <h2 className="question-title">{htmlToStr(props.title)}</h2>
             <div className="options-container">
-                {buttonList}
+                <div className="buttonList-container">{buttonList}</div>
                 {props.disabled && (
                     <img
                         className="answer-icon"

@@ -53,3 +53,24 @@
     width: 32px;
     padding-bottom: 15px;
 }
+
+@media only screen and (max-width: 425px) {
+    .question-container {
+        border-bottom: 1.5px solid #dbdef0;
+        width: 100%;
+    }
+
+    .question-button {
+        font-size: 1.2rem;
+        font-family: "Karla", sans-serif;
+
+        width: fit-content;
+        height: 30px;
+        margin: 0 1rem 1rem 0;
+        /* background-color: #4d5b9e; */
+        border: 1.5px solid #4d5b9e;
+        border-radius: 12px;
+        color: #293264;
+        cursor: pointer;
+    }
+}

@@ -55,7 +55,6 @@ function App() {
                         })
                     )
                 );
-            // setQuestions((oldArray) => shuffleArray(oldArray));
         },
         [isGameStart]
     );
@@ -133,7 +132,9 @@ function App() {
     return (
         <div className="page-container">
             <img src={blob1} className="blob-top"></img>
-            <main className="main-container">
+            <main
+                className={isGameStart ? "main-container" : "intro-container"}
+            >
                 {isGameStart ? (
                     componentsArray
                 ) : (

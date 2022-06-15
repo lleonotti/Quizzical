@@ -45,13 +45,13 @@
     cursor: pointer;
 }
 
-@media only screen and (max-width: 425px) {
+@media only screen and (max-width: 500px) {
     .intro-container {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: red;
+        /* background-color: red; */
     }
 
     .api-form-label {
@@ -79,7 +79,7 @@
         text-align: center;
         background-color: #ffffff;
         border: none;
-        border-radius: 15px;
+        border-radius: 7px;
         color: #293264;
         cursor: pointer;
     }
