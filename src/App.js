@@ -26,6 +26,7 @@ function App() {
             const j = Math.floor(Math.random() * (i + 1));
             [array[i], array[j]] = [array[j], array[i]];
         }
+        return array;
     }
 
     const startGame = () => {
@@ -45,10 +46,10 @@ function App() {
                                 selectedAnswer: "",
                                 isRight: false,
                                 id: nanoid(),
-                                answers: [
+                                answers: shuffleArray([
                                     ...obj.incorrect_answers,
                                     obj.correct_answer,
-                                ],
+                                ]),
                                 ...obj,
                             };
                         })
@@ -130,7 +131,7 @@ function App() {
     });
 
     return (
-        <>
+        <div className="page-container">
             <img src={blob1} className="blob-top"></img>
             <main className="main-container">
                 {isGameStart ? (
@@ -162,7 +163,7 @@ function App() {
                 </section>
             )}
             <img src={blob2} className="blob-bottom"></img>
-        </>
+        </div>
     );
 }
 

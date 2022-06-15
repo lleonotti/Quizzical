@@ -44,3 +44,43 @@
     color: #293264;
     cursor: pointer;
 }
+
+@media only screen and (max-width: 425px) {
+    .intro-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: red;
+    }
+
+    .api-form-label {
+        font-size: 1.2rem;
+        /* padding: 0 1rem 0 1rem; */
+    }
+
+    .api-form-container {
+        display: grid;
+        grid-template-columns: 0.1fr 2fr;
+        grid-template-rows: repeat(2, 1fr);
+        gap: 1rem;
+        text-align: center;
+        /* justify-items: center; */
+        align-items: center;
+        /* margin-bottom: 2rem; */
+    }
+
+    .main-selector {
+        font-size: 1rem;
+        font-family: "Karla", sans-serif;
+        /* AQUI2 */
+        width: 200px;
+        height: 40px;
+        text-align: center;
+        background-color: #ffffff;
+        border: none;
+        border-radius: 15px;
+        color: #293264;
+        cursor: pointer;
+    }
+}
