@@ -71,7 +71,24 @@ body {
     padding: 0 1rem 0 1rem;
 }
 
-@media only screen and (max-width: 425px) {
+.footer-leo {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 2rem;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.linkedin-link {
+    text-decoration: none;
+    color: #293264;
+    font-size: 1.2rem;
+}
+@media only screen and (max-width: 500px) {
     .results-container {
         display: flex;
         justify-content: center;

@@ -2,7 +2,6 @@ import React from "react";
 import { nanoid } from "nanoid";
 import "./App.css";
 import Intro from "./components/Intro";
-import Blob from "./components/Blob";
 import Question from "./components/Question";
 import blob1 from "./assets/shape-1.png";
 import blob2 from "./assets/shape-2.png";
@@ -98,12 +97,6 @@ function App() {
         setIsGameOver((oldState) => !oldState);
     };
 
-    const handleIsRight = () => {
-        let counter = 0;
-        questions.forEach((element) => (element.isRight ? (counter += 1) : 0));
-        setCorrectCounter((oldValue) => oldValue + counter);
-    };
-
     const handleReset = () => {
         setIsGameStart((oldState) => !oldState);
         setQuestions([]);
@@ -131,7 +124,7 @@ function App() {
 
     return (
         <div className="page-container">
-            <img src={blob1} className="blob-top"></img>
+            <img src={blob1} className="blob-top" alt="blob-decoration"></img>
             <main
                 className={isGameStart ? "main-container" : "intro-container"}
             >
@@ -163,7 +156,22 @@ function App() {
                     </button>
                 </section>
             )}
-            <img src={blob2} className="blob-bottom"></img>
+            <img
+                src={blob2}
+                className="blob-bottom"
+                alt="blob-decoration"
+            ></img>
+
+            {isGameStart ? null : (
+                <footer className="footer-leo">
+                    <a
+                        href="https://github.com/lleonotti"
+                        className="linkedin-link"
+                    >
+                        Developed by Leonardo Leonotti
+                    </a>
+                </footer>
+            )}
         </div>
     );
 }
