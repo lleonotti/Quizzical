@@ -47,7 +47,7 @@ body {
 }
 
 .blob-top {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     width: 20vw;
@@ -55,7 +55,7 @@ body {
 }
 
 .blob-bottom {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 18vw;
     z-index: -1;
@@ -88,6 +88,7 @@ body {
     color: #293264;
     font-size: 1.2rem;
 }
+
 @media only screen and (max-width: 500px) {
     .results-container {
         display: flex;
@@ -104,5 +105,9 @@ body {
         height: auto;
         margin-top: 1rem;
         padding: 0 1rem 0 1rem;
+    }
+
+    .main-btn {
+        margin-right: 1rem;
     }
 }

@@ -2,7 +2,8 @@ import React from "react";
 import { nanoid } from "nanoid";
 import correct from "../assets/correct.png";
 import fail from "../assets/failed.png";
-import Option from "./Option";
+import correctGreen from "../assets/correctGreen.png";
+import wrong from "../assets/wrong.png";
 import "./Question.css";
 
 function Question(props) {
@@ -24,7 +25,11 @@ function Question(props) {
     const buttonList = props.answers.map((option) => {
         return (
             <button
-                className="question-button"
+                className={
+                    props.correct == option && props.disabled
+                        ? "question-button-gameOver"
+                        : "question-button"
+                }
                 key={nanoid()}
                 style={props.selectedAnswer == option ? styles : styles2}
                 value={option}
@@ -46,7 +51,7 @@ function Question(props) {
                 {props.disabled && (
                     <img
                         className="answer-icon"
-                        src={props.isRight ? correct : fail}
+                        src={props.isRight ? correctGreen : wrong}
                         alt="Correct icon or Incorrect Icon"
                     />
                 )}
